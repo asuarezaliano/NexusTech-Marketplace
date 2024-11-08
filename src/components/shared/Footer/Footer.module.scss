@@ -1,0 +1,99 @@
+@import '../../../scss/variables';
+
+.footer {
+  background: $color-primary;
+  color: $text-color;
+  padding: 3rem 0 1rem;
+  font-family: Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin-top: 4rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: $gradient;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.column {
+  flex: 1;
+  margin-bottom: 2rem;
+  min-width: 200px;
+}
+
+.logo {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: $main-contrast;
+}
+
+.slogan {
+  font-style: italic;
+  color: $color-secondary;
+}
+
+.column h4 {
+  color: $main-contrast;
+  margin-bottom: 1rem;
+}
+
+.column ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.column ul li {
+  margin-bottom: 0.5rem;
+}
+
+.column a {
+  color: $text-color;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $main-contrast;
+  }
+}
+
+.bottomBar {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid $border-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .column {
+    margin-bottom: 1.5rem;
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    text-align: center;
+  }
+}
