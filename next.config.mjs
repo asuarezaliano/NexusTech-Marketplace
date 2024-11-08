@@ -1,4 +1,25 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+import withBundleAnalyzer from '@next/bundle-analyzer'
 
-export default nextConfig;
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+const nextConfig = {
+  sassOptions: {
+    prependData: `@import 'src/scss/main';`,
+  },
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'cdn.shopify.com',
+        protocol: 'https',
+      },
+    ],
+  },
+  experimental: {
+    scrollRestoration: true,
+  },
+}
+
+export default bundleAnalyzer(nextConfig)
