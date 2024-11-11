@@ -24,7 +24,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${roboto.className} flex-layout`}>
         <Header />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow">
+          <div className="container">{children}</div>
+        </main>
         <Footer />
       </body>
     </html>

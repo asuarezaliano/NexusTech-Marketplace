@@ -1,0 +1,52 @@
+.SortSelect {
+  position: relative;
+  color: $text-color;
+
+  &__button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: $text-color;
+    min-width: 200px;
+    justify-content: space-between;
+    padding: 0.5rem;
+
+    .arrow {
+      transition: transform 0.2s ease;
+      font-size: 1.5rem;
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-flow: column nowrap;
+    row-gap: 0.5rem;
+    position: absolute;
+    background: $color-primary;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    right: 0;
+    min-width: 200px;
+    padding: 1rem;
+    z-index: 2;
+
+    div {
+      color: $text-color;
+      text-decoration: none;
+      padding: 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba($border-color, 0.1);
+      }
+    }
+  }
+}

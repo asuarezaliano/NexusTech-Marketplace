@@ -8,10 +8,11 @@
   font-weight: 700;
   letter-spacing: 0.2px;
   justify-content: flex-start;
-  padding: 24px 88px 0;
+  padding: 1.5rem 4rem 0;
 
   @media (max-width: 991px) {
     max-width: 100%;
+    padding: 0 4rem;
   }
 }
 
@@ -19,7 +20,7 @@
   align-self: center;
   display: flex;
   width: 100%;
-  max-width: 1264px;
+  max-width: 1300px;
   align-items: center;
   gap: 40px 100px;
   justify-content: space-between;
