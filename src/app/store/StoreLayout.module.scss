@@ -51,11 +51,30 @@
       color: white;
     }
   }
-
   &__title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    gap: 1rem;
     padding: 1rem 0;
+
+    > * {
+      button {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 650px) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      > * {
+        width: auto;
+      }
+    }
+  }
+  &__FilterSelectWrapper {
+    @media (min-width: 650px) {
+      display: none;
+    }
   }
 }

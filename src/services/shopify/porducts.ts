@@ -3,9 +3,16 @@ import { shopifyUrls } from './urls'
 import { env } from 'app/config/env'
 
 export const ServiceProducts = {
-  getProducts: async (id?: string): Promise<ProductType[]> => {
+  getProducts: async (id?: string, collectionId?: string): Promise<ProductType[]> => {
     try {
-      const apiUrl = id ? `${shopifyUrls.products.all}?ids=${id}` : shopifyUrls.products.all
+      let apiUrl = shopifyUrls.products.all
+      if (id) {
+        apiUrl += `?ids=${id}`
+      }
+      if (collectionId) {
+        apiUrl += `${id ? '&' : '?'}collection_id=${collectionId}`
+      }
+
       const { data } = await axios.get(apiUrl, {
         headers: {
           'X-Shopify-Access-Token': env.SHOPIFY_TOKEN,
@@ -38,12 +45,8 @@ export const ServiceProducts = {
       headers: new Headers({
         'X-Shopify-Access-Token': env.SHOPIFY_TOKEN,
       }),
-      // next: {
-      //   revalidate: 60 * 5, // 5 minutos
-      // },
-      cache: 'force-cache',
       next: {
-        tags: ['main-products'],
+        revalidate: 60 * 60, // 1 h
       },
     })
 
