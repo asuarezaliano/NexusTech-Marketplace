@@ -12,7 +12,7 @@ export const ServiceProducts = {
         },
       })
       const products = data.products
-      console.log({ products })
+
       const transformedProducts = products.map((product: any) => {
         return {
           id: product.id,

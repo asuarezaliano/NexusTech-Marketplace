@@ -7,6 +7,7 @@ import { validateAccessToken } from 'app/utils/auth/validateAccessToken'
 
 const NoSSRShoppingCart = dynamic(() => import('../ShoppingCart'), { ssr: false })
 const UserDropdown = dynamic(() => import('../UserDropDown/UserDropdown'), { ssr: false })
+const MobileMenu = dynamic(() => import('../MobileMenu/MobileMenu'), { ssr: false })
 
 export const Header: React.FC = async () => {
   const customer = await validateAccessToken()
@@ -22,7 +23,7 @@ export const Header: React.FC = async () => {
           width={55}
           height={55}
         />
-        <nav className={styles.navigation}>
+        <nav className={`${styles.navigation} ${styles.desktopNav}`}>
           <div className={styles.navLinks}>
             <Button variant="link" href="/">
               Home
@@ -56,6 +57,13 @@ export const Header: React.FC = async () => {
           </div>
           <div className={styles.sellProductWrapper}>
             <Button>Sell a product</Button>
+          </div>
+        </nav>
+
+        <nav className={`${styles.navigation} ${styles.mobileNav}`}>
+          <div className={styles.mobileActions}>
+            <NoSSRShoppingCart />
+            <MobileMenu customer={customer} />
           </div>
         </nav>
       </div>

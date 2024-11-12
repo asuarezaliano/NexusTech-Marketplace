@@ -12,7 +12,10 @@
 
   @media (max-width: 991px) {
     max-width: 100%;
-    padding: 0 4rem;
+    padding: 1.5rem 4rem;
+  }
+  @media (max-width: 650px) {
+    padding: 1.5rem 2rem;
   }
 }
 
@@ -52,6 +55,7 @@
 
   @media (max-width: 991px) {
     max-width: 100%;
+    min-width: auto;
   }
 }
 
@@ -151,4 +155,36 @@
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.desktopNav {
+  display: none;
+
+  @media (min-width: 830px) {
+    display: flex;
+  }
+}
+
+.mobileNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: 830px) {
+    display: none;
+  }
+}
+
+.menuButton {
+  padding: 8px;
+}
+
+.mobileActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sellButton {
+  padding: 8px 16px;
 }
