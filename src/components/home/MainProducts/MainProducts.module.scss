@@ -1,8 +1,8 @@
 .MainProducts {
-  & > h3 {
+  &__title {
     text-align: center;
-    font-size: 3rem;
   }
+
   &__grid {
     display: grid;
     width: 100%;
@@ -29,4 +29,5 @@
       }
     }
   }
+  scroll-margin-top: 80px;
 }

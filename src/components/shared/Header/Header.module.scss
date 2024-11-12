@@ -9,6 +9,7 @@
   letter-spacing: 0.2px;
   justify-content: flex-start;
   padding: 1.5rem 4rem 0;
+  z-index: 2;
 
   @media (max-width: 991px) {
     max-width: 100%;
