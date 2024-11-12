@@ -7,21 +7,30 @@ interface ProductCardInterface {
 }
 
 export const ProductCard = ({ product }: ProductCardInterface) => {
+  console.log({ a: product.vendor })
   return (
     <Link href={`/product/${product.handle}?id=${product.id}`} className={styles.ProductCard__link}>
       <article className={styles.ProductCard}>
-        <Image
-          src={product.image}
-          alt={product.title}
-          quality={80}
-          height={320}
-          width={320}
-          loading="eager"
-        />
-        <div className={styles.ProductCard__info}>
-          <h3>{product.title}</h3>
+        <div className={styles.ProductCard__imageContainer}>
+          <Image
+            src={product.image}
+            alt={product.title}
+            quality={80}
+            height={320}
+            width={320}
+            loading="eager"
+          />
         </div>
-        <span className={styles.ProductCard__priceTag}>${product.price} USD</span>
+        <div className={styles.ProductCard__info}>
+          <h3 className={styles.ProductCard__title}>{product.title}</h3>
+          <p className={styles.ProductCard__description}>
+            {product.description.substring(0, 100)}...
+          </p>
+          <div className={styles.ProductCard__footer}>
+            <span className={styles.ProductCard__price}>${product.price} USD</span>
+            <span className={styles.ProductCard__seller}>{product.vendor}</span>
+          </div>
+        </div>
       </article>
     </Link>
   )

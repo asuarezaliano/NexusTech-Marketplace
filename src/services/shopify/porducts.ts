@@ -12,7 +12,7 @@ export const ServiceProducts = {
         },
       })
       const products = data.products
-
+      console.log({ products })
       const transformedProducts = products.map((product: any) => {
         return {
           id: product.id,
@@ -24,6 +24,7 @@ export const ServiceProducts = {
           quantity: product.variants[0].inventory_quantity,
           handle: product.handle,
           tags: product.tags,
+          vendor: product.vendor,
         }
       })
       return transformedProducts

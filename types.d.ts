@@ -13,6 +13,7 @@ type ProductType = {
   handle: string
   tags: string
   gql_id: string
+  vendor: string
 }
 
 type CartItem = {
