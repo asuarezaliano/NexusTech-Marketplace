@@ -1,13 +1,12 @@
-@import '../../../scss/variables';
-
 .footer {
   background: $color-primary;
   color: $text-color;
-  padding: 3rem 0 1rem;
+  padding: 1.5rem 4rem 0;
   font-family: Arial, sans-serif;
   position: relative;
   overflow: hidden;
   margin-top: 4rem;
+  width: 100%;
 
   &::before {
     content: '';
@@ -21,9 +20,12 @@
 }
 
 .container {
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  width: 100%;
+  max-width: 1400px;
+  @media (max-width: 991px) {
+    max-width: 100%;
+  }
 }
 
 .row {

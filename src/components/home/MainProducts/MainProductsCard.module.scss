@@ -1,26 +1,38 @@
 .card {
-  display: flex;
-  flex-direction: column;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
-  background: white;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
+  background: #2c2c2c;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
 
   &:hover {
     transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 }
 
 .imageContainer {
   width: 100%;
-  aspect-ratio: 1;
+  height: 380px;
   position: relative;
-  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    object-fit: cover;
+    position: absolute;
+  }
 }
 
 .content {
   padding: 1rem;
   background: white;
+  height: 100%;
 }
 
 .title {

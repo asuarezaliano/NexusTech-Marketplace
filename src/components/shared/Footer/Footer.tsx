@@ -7,14 +7,14 @@ export const Footer: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.row}>
           <div className={styles.column}>
-            <h3 className={styles.logo}>Future World</h3>
-            <p className={styles.slogan}>Construyendo el mañana, hoy.</p>
+            <h3 className={styles.logo}>Nexus Tech</h3>
+            <p className={styles.slogan}>Tomorrow&apos;s Tech, Today&apos;s Reality</p>
           </div>
           <div className={styles.column}>
-            <h4>Enlaces</h4>
+            <h4>Links</h4>
             <ul>
               <li>
-                <a href="/">Inicio</a>
+                <a href="/">Home</a>
               </li>
               <li>
                 <a href="/store">Store</a>
@@ -22,13 +22,13 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
           <div className={styles.column}>
-            <h4>Contacto</h4>
-            <p>Email: info@futureworld.com</p>
-            <p>Teléfono: +1 234 567 890</p>
+            <h4>Contact</h4>
+            <p>Email: alesuarezaliano@gmail.com</p>
+            <p>Mobile: +1 234 567 890</p>
           </div>
         </div>
         <div className={styles.bottomBar}>
-          <p>&copy; {new Date().getFullYear()} Future World. Todos los derechos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} Nexus Tech. All rights reserved.</p>
         </div>
       </div>
     </footer>

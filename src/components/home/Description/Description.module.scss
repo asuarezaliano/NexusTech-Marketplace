@@ -1,6 +1,18 @@
 .Description {
   position: relative;
   z-index: 10;
+  padding-top: 50px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98vw;
+    height: 4px;
+    background: $gradient;
+  }
 
   &__Container {
     display: grid;

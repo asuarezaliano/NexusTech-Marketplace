@@ -1,6 +1,18 @@
 .MainProducts {
   z-index: 10;
   position: relative;
+  padding-top: 50px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98vw;
+    height: 4px;
+    background: $gradient;
+  }
 
   &__title {
     text-align: center;
@@ -17,7 +29,14 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
+    @media (min-width: 1000px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
     & > article {
+      height: 100%;
+      width: 100%;
+      display: flex;
       position: relative;
       z-index: 1;
       min-height: 400px;
