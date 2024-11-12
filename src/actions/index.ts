@@ -82,3 +82,7 @@ export const handleCreateCart = async (items: CartItem[]) => {
 
   return cartCreate?.cart?.checkoutUrl
 }
+
+export async function logout() {
+  cookies().delete('accessToken')
+}

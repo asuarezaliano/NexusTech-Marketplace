@@ -1,41 +1,191 @@
-.Header {
+.header {
+  align-self: stretch;
+  position: relative;
   display: flex;
-  flex-flow: row nowrap;
+  width: 100%;
+  flex-direction: column;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  justify-content: flex-start;
+  padding: 1.5rem 4rem 0;
+  z-index: 2;
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+    padding: 1.5rem 4rem 0 4rem;
+  }
+  @media (max-width: 650px) {
+    padding: 1.5rem 2rem 0 2rem;
+  }
+}
+
+.content {
+  align-self: center;
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
   align-items: center;
-  padding: 0 2rem;
+  gap: 40px 100px;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
-  &__list {
-    display: flex;
-    flex-flow: row nowrap;
-    list-style: none;
-    column-gap: 2.5rem;
-    margin: 0 auto;
-    padding: 2rem;
-    justify-content: center;
-
-    & > li > a {
-      color: $text-color;
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 400;
-    }
+  @media (max-width: 991px) {
+    max-width: 100%;
   }
+}
 
-  &__user {
-    margin-left: auto;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    column-gap: 1rem;
+.logo {
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  align-self: stretch;
+  margin: auto 0;
+  border-radius: 50%;
+}
 
-    & > a {
-      color: $text-color;
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 400;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-    }
+.navigation {
+  align-self: stretch;
+  display: flex;
+  min-width: 240px;
+  align-items: center;
+  gap: 40px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: auto 0;
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+    min-width: auto;
   }
+}
+
+.navLinks {
+  align-self: stretch;
+  display: flex;
+  min-width: 240px;
+  align-items: center;
+  gap: 40px 56px;
+  font-size: 16px;
+  justify-content: flex-start;
+  margin: auto 0;
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+  }
+}
+
+.navLink {
+  align-self: stretch;
+  margin: auto 0;
+}
+
+.navLinkWhite {
+  color: var(--neutral-white, #fff);
+  font-weight: 400;
+  align-self: stretch;
+  margin: auto 0;
+}
+
+.signInWrapper {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 24px;
+  justify-content: space-between;
+  white-space: nowrap;
+  width: auto;
+  min-width: 82px;
+  margin: auto 0;
+}
+
+.signInText {
+  align-self: stretch;
+  margin: auto 0;
+  white-space: nowrap;
+}
+
+.signInIcon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 24px;
+  align-self: stretch;
+  margin: auto 0;
+}
+
+.sellProductWrapper {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--neutral-gray900, #050505);
+  line-height: 24px;
+  justify-content: flex-start;
+  margin: auto 0;
+}
+
+.divider {
+  background-color: var(--neutral-gray800, #242424);
+  display: flex;
+  min-height: 1px;
+  margin-top: 23px;
+  width: 100%;
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.userMenuWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.desktopNav {
+  display: none;
+
+  @media (min-width: 830px) {
+    display: flex;
+  }
+}
+
+.mobileNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: 830px) {
+    display: none;
+  }
+}
+
+.menuButton {
+  padding: 8px;
+}
+
+.mobileActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sellButton {
+  padding: 8px 16px;
 }
