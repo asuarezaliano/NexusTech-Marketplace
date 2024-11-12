@@ -3,13 +3,13 @@ import { ServiceProducts } from 'app/services/shopify/porducts'
 import { redirect } from 'next/navigation'
 
 interface ProductPageProps {
-  searchParams: {
+  params: {
     id: string
   }
 }
 
-export async function generateMetadata({ searchParams }: ProductPageProps) {
-  const id = searchParams.id
+export async function generateMetadata(props: ProductPageProps) {
+  const { id } = props.params
 
   if (!id) return null
 
@@ -26,8 +26,8 @@ export async function generateMetadata({ searchParams }: ProductPageProps) {
   }
 }
 
-export default async function ProductPage({ searchParams }: ProductPageProps) {
-  const id = searchParams.id
+export default async function ProductPage(props: ProductPageProps) {
+  const { id } = props.params
 
   if (!id) redirect('/store')
 

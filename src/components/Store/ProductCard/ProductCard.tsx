@@ -9,7 +9,7 @@ interface ProductCardInterface {
 
 export const ProductCard = ({ product }: ProductCardInterface) => {
   return (
-    <Link href={`/product/${product.handle}?id=${product.id}`} className={styles.ProductCard__link}>
+    <Link href={`/product/${product.id}`} className={styles.ProductCard__link}>
       <article className={styles.ProductCard}>
         <div className={styles.ProductCard__imageContainer}>
           <Image
