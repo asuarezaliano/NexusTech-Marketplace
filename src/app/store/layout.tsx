@@ -7,7 +7,7 @@ import FilterSelect from 'app/components/shared/FilterSelect/FilterSelect'
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const collections = await ServiceCollections.getCollections()
-  const sortedCollections = collections.sort((a, b) => a.title.localeCompare(b.title))
+  const sortedCollections = collections.sort((a: any, b: any) => a.title.localeCompare(b.title))
 
   return (
     <main className={styles.StoreLayout}>
