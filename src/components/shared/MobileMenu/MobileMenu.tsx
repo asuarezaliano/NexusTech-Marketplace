@@ -28,7 +28,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ customer }) => {
   }
 
   return (
-    <div>
+    <div className={styles.mobileMenu}>
       <IoMdMenu onClick={handleOnClick} className={styles.mobileIcon} />
       <div className={`${styles.drawer} ${isMobileMenuOpen ? styles.open : ''}`}>
         <div className={styles.header}>

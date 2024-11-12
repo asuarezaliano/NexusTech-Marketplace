@@ -5,11 +5,14 @@ import { useShoppingCart } from 'app/hooks/useShoppingCart'
 import { ShoppingCartItem } from './ShoppingCartItem'
 import { handleCreateCart } from 'app/actions'
 import styles from './ShoppingCart.module.scss'
+import Link from 'next/link'
+import { useWindowSize } from 'app/hooks/useWindowResize'
 
 export default function ShoppingCart() {
   const { cart } = useShoppingCart()
   const [isBuying, setIsBuying] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const { width } = useWindowSize()
   const hasItems = cart.length > 0
 
   const handleOpen = () => {
@@ -30,6 +33,17 @@ export default function ShoppingCart() {
     } finally {
       setIsBuying(false)
     }
+  }
+
+  if (width <= 900) {
+    return (
+      <Link href="/cart" className={styles.ShoppingCart}>
+        {hasItems && <span className={styles.ShoppingCart__counter}>{cart.length}</span>}
+        <button className={styles.ShoppingCart__cart} onClick={handleOpen}>
+          <FaShoppingCart />
+        </button>
+      </Link>
+    )
   }
 
   return (
