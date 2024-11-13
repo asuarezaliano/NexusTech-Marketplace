@@ -42,6 +42,7 @@ body {
   padding: 0 4rem;
   justify-content: center;
   display: flex;
+  z-index: 1;
 
   @media (max-width: 991px) {
     max-width: 100%;

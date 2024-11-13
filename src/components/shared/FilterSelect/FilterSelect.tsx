@@ -1,8 +1,9 @@
 'use client'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import styles from './FilterSelect.module.scss'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import Link from 'next/link'
+import { useClickOutside } from 'app/hooks/useClickOutside'
 
 interface FilterSelectProps {
   collections: Array<{
@@ -15,6 +16,9 @@ interface FilterSelectProps {
 export default function FilterSelect({ collections }: FilterSelectProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState('')
+  const modalRef = useRef<HTMLDivElement>(null)
+
+  useClickOutside(modalRef, () => setIsOpen(false), isOpen)
 
   const handleSelect = (value: string) => {
     setSelectedOption(value)
@@ -22,7 +26,7 @@ export default function FilterSelect({ collections }: FilterSelectProps) {
   }
 
   return (
-    <div className={styles.FilterSelect}>
+    <div onBlur={() => setIsOpen(false)} tabIndex={0} className={styles.FilterSelect}>
       <button className={styles.FilterSelect__button} onClick={() => setIsOpen(!isOpen)}>
         <span>
           {collections.find(col => col.handle === selectedOption)?.title ||
@@ -32,7 +36,7 @@ export default function FilterSelect({ collections }: FilterSelectProps) {
       </button>
 
       {isOpen && (
-        <div className={styles.FilterSelect__items}>
+        <div ref={modalRef} className={styles.FilterSelect__items}>
           <Link onClick={() => handleSelect('')} key={'0'} href={'/store/'}>
             All
           </Link>

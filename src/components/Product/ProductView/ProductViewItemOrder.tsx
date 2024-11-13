@@ -3,6 +3,7 @@ import { SyntheticEvent, useState } from 'react'
 import { FaCartShopping } from 'react-icons/fa6'
 import styles from './ProductViewItemOrder.module.scss'
 import { useShoppingCart } from 'app/hooks/useShoppingCart'
+import { Button } from 'app/components/shared/Button/Button'
 
 interface ProductViewItemsOrderProps {
   maxQuantity: number
@@ -18,6 +19,7 @@ export const ProductViewItemsOrder = ({ maxQuantity, product }: ProductViewItems
     addToCart({
       title: product.title,
       price: product.price,
+      description: product.description,
       quantity: counter,
       id: product.id,
       image: product.image,
@@ -45,10 +47,10 @@ export const ProductViewItemsOrder = ({ maxQuantity, product }: ProductViewItems
         <button onClick={handleAdd}>+</button>
       </div>
       <form onSubmit={handleSubmit} className={styles.ProductViewItemsOrder__form}>
-        <button className={styles.ProductViewItemsOrder__submit} type="submit">
+        <Button className={styles.ProductViewItemsOrder__submit} type="submit">
           <FaCartShopping />
           <span>Add to cart</span>
-        </button>
+        </Button>
       </form>
     </div>
   )

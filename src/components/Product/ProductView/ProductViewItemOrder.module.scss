@@ -4,6 +4,11 @@
   grid-gap: 1.25rem;
   margin-top: 2rem;
 
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+  }
+
   &__itemsCount {
     display: flex;
     column-gap: 0.5rem;
@@ -12,6 +17,11 @@
     border-radius: 0.5rem;
     background: $border-color;
     width: fit-content;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      justify-content: center;
+    }
 
     & > button {
       display: flex;
@@ -26,6 +36,10 @@
       border: none;
       padding: 0 2rem;
       cursor: pointer;
+
+      @media (max-width: 768px) {
+        padding: 0 1rem;
+      }
     }
 
     & > p {

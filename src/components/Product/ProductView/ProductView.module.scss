@@ -5,12 +5,33 @@
   grid-template-columns: 1fr 450px;
   grid-gap: 5rem;
   margin-top: 5rem;
+  padding: 0 1rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    margin-top: 2rem;
+    grid-gap: 2rem;
+  }
 
   &__images {
     justify-self: end;
 
     & > img {
       border-radius: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      justify-self: center;
+
+      & > img {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 
@@ -40,6 +61,10 @@
       font-weight: 700;
       margin-top: 0;
       margin-bottom: 0.5rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
     }
 
     &__description {

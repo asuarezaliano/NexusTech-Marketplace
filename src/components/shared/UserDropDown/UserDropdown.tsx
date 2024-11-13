@@ -1,12 +1,16 @@
 'use client'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import styles from './UserDropdown.module.scss'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { Button } from '../Button/Button'
 import { logout } from 'app/actions'
+import { useClickOutside } from 'app/hooks/useClickOutside'
 
 export const UserDropdown: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const modalRef = useRef<HTMLDivElement>(null)
+
+  useClickOutside(modalRef, () => setIsOpen(false), isOpen)
 
   return (
     <div className={styles.UserDropdown}>
@@ -15,7 +19,7 @@ export const UserDropdown: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className={styles.UserDropdown__items}>
+        <div ref={modalRef} className={styles.UserDropdown__items}>
           <Button variant="link" href="/my-account/profile">
             Profile
           </Button>

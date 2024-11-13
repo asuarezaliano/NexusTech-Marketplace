@@ -20,6 +20,8 @@
   z-index: 1000;
   background-color: black;
   padding: 0 10px;
+  z-index: 20;
+  background-color: black;
   &.open {
     right: 0;
   }
