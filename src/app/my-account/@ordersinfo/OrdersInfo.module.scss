@@ -1,0 +1,149 @@
+.ordersContainer {
+  margin: 0 auto;
+  padding: 2rem 0;
+
+  h2 {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+}
+
+.title {
+  padding: 1rem 0;
+}
+
+.ordersList {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.orderCard {
+  border: 2px solid $border-color;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.2s;
+  display: grid;
+  gap: 2rem;
+}
+
+.orderHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.orderNumber {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.orderDetails {
+  display: grid;
+  gap: 1rem;
+}
+
+.orderStatusRow {
+  display: grid;
+  gap: 0.5rem;
+}
+.statusLink {
+  width: 100%;
+}
+
+.orderTotal {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 1rem;
+}
+
+.orderMeta {
+  display: grid;
+  gap: 0.5rem;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.statusRow {
+  display: grid;
+  gap: 0.5rem;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.orderInfo {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: $background-secondary;
+  border-radius: 8px;
+
+  h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .infoItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    span {
+      font-weight: 500;
+    }
+
+    div {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.cancelInfo {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #ffebee;
+  border-radius: 8px;
+  color: #c62828;
+}
+
+@media (max-width: 640px) {
+  .orderHeader {
+    .orderMeta {
+      margin-top: 0.5rem;
+    }
+  }
+
+  .statusRow {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .orderInfo {
+    .infoItem {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+}
+
+.statusRow {
+  align-items: center;
+  display: flex;
+}

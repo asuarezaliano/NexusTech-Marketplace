@@ -1,0 +1,50 @@
+.statusLabel {
+  display: inline-flex;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  width: fit-content;
+  padding: 0.5rem 2rem;
+}
+
+.authorized {
+  background-color: #1976d2;
+  color: white;
+}
+
+.expired {
+  background-color: #757575;
+  color: white;
+}
+
+.paid {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.partially_paid {
+  background-color: #f57c00;
+  color: white;
+}
+
+.partially_refunded {
+  background-color: #c2185b;
+  color: white;
+}
+
+.pending {
+  background-color: #ffa000;
+  color: white;
+}
+
+.refunded {
+  background-color: #7b1fa2;
+  color: white;
+}
+
+.voided {
+  background-color: #c62828;
+  color: white;
+}

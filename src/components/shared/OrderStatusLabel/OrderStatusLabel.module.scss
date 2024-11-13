@@ -1,0 +1,58 @@
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  width: fit-content;
+  padding: 0.5rem 2rem;
+}
+
+.fulfilled {
+  background-color: #4caf50;
+  color: white;
+}
+
+.in_progress {
+  background-color: #2196f3;
+  color: white;
+}
+
+.on_hold {
+  background-color: #ff9800;
+  color: white;
+}
+
+.open {
+  background-color: #9e9e9e;
+  color: white;
+}
+
+.partially_fulfilled {
+  background-color: #8bc34a;
+  color: white;
+}
+
+.pending_fulfillment {
+  background-color: #03a9f4;
+  color: white;
+}
+
+.request_declined {
+  background-color: #f44336;
+  color: white;
+}
+
+.restocked {
+  background-color: #9e9e9e;
+  color: white;
+}
+
+.scheduled {
+  background-color: #673ab7;
+  color: white;
+}
+
+.unfulfilled {
+  background-color: #795548;
+  color: white;
+}

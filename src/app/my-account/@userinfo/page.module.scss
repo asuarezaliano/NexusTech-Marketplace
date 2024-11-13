@@ -1,0 +1,69 @@
+.container {
+  padding: 1rem 0;
+  margin: 0 auto;
+}
+
+.userCard {
+  background: $background-secondary;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: white;
+  border-color: $border-color;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-weight: 600;
+  color: $text-color;
+  font-size: 0.9rem;
+  color: $gradient;
+}
+
+.value {
+  color: $text-color;
+  font-size: 1rem;
+}
+
+.addressSection {
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .userCard {
+    padding: 1rem;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

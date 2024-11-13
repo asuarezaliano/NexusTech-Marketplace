@@ -1,14 +1,21 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { validateAccessToken } from './utils/auth/validateAccessToken'
+import { decrypt } from './utils/encryption'
 
 export const config = {
-  matcher: ['/login/:path*', '/signup/:path*', '/user/:path*', '/profile/:path*'],
+  matcher: [
+    '/login/:path*',
+    '/signup/:path*',
+    '/user/:path*',
+    '/profile/:path*',
+    '/my-account/:path*',
+  ],
 }
 
 export async function middleware(request: NextRequest) {
   const cookieStore = request.cookies
-  const accessToken = cookieStore.get('accessToken')?.value
+  const accessToken = await decrypt(cookieStore.get('accessToken')?.value)
 
   const path = request.nextUrl.pathname
 
@@ -16,7 +23,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/store', request.url))
   }
 
-  if (path.startsWith('/user') || path.startsWith('/profile')) {
+  if (path.startsWith('/my-account')) {
     try {
       const customer = await validateAccessToken()
 

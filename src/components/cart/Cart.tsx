@@ -60,7 +60,9 @@ export const Cart: FC = () => {
               <div className={styles.productPriceWrapper}>
                 <div className={styles.priceContent}>
                   <span>Quantity: {item.quantity}</span>
-                  <div className={styles.productPrice}>{item.price * item.quantity} USD</div>
+                  <div className={styles.productPrice}>
+                    {(item.price * item.quantity).toFixed(2)} USD
+                  </div>
                 </div>
               </div>
             </Link>
@@ -68,7 +70,7 @@ export const Cart: FC = () => {
           <div className={styles.cartSummary}>
             <div className={styles.totalAmount}>
               <h3>Total</h3>
-              <span>{cart.total}USD</span>
+              <span>{cart.total.toFixed(2)} USD</span>
             </div>
             <Button className={styles.checkoutButton} onClick={handleBuy} disabled={isBuying}>
               Buy

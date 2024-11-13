@@ -1,18 +1,35 @@
 import { GraphQLClientSingleton } from 'app/graphql'
+import { customerAllDataQuery } from 'app/graphql/queries/customerAlldata'
 import { getOrdersQuery } from 'app/graphql/queries/getOrders'
+import { decrypt } from 'app/utils/encryption'
 import { cookies } from 'next/headers'
 
 interface OrderNode {
-  id: string
-  orderNumber: number
-  processedAt: string
+  cancelReason: string | null
+  canceledAt: string | null
+  currencyCode: string
+  customerLocale: string
+  customerUrl: string
+  edited: boolean
+  email: string
   financialStatus: string
   fulfillmentStatus: string
-  totalPrice: {
-    amount: string
-    currencyCode: string
+  id: string
+  name: string
+  orderNumber: number
+  phone: string
+  processedAt: string
+  statusUrl: string
+  lineItems: {
+    edges: Array<{
+      cursor: string
+      node: {
+        currentQuantity: number
+        quantity: number
+        title: string
+      }
+    }>
   }
-  // Añade más campos según necesites
 }
 
 interface CustomerOrdersResponse {
@@ -26,9 +43,9 @@ interface CustomerOrdersResponse {
   }
 }
 
-export const getCustomerOrders = async () => {
+export const getCustomerOrders = async (): Promise<Order> => {
   const cookiesStorage = cookies()
-  const accessToken = cookiesStorage.get('accessToken')?.value || ''
+  const accessToken = (await decrypt(cookiesStorage.get('accessToken')?.value)) || ''
   const graphqlClient = GraphQLClientSingleton.getInstance().getClient()
   const variables = {
     customerAccessToken: accessToken,
@@ -40,7 +57,22 @@ export const getCustomerOrders = async () => {
   )
   const orders = customer?.orders?.edges.map(({ node }) => node)
   return {
-    totalOrders: customer?.orders?.totalCount,
+    totalCount: customer?.orders?.totalCount,
     orders,
   }
+}
+
+export const getAllCustomerData = async (): Promise<Customer> => {
+  const cookiesStorage = cookies()
+  const accessToken = (await decrypt(cookiesStorage.get('accessToken')?.value)) || ''
+  const graphqlClient = GraphQLClientSingleton.getInstance().getClient()
+  const variables = {
+    customerAccessToken: accessToken,
+  }
+
+  const { customer } = await graphqlClient.request<{ customer: Customer }>(
+    customerAllDataQuery,
+    variables
+  )
+  return customer
 }

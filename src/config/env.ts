@@ -4,4 +4,5 @@ export const env = {
   CACHE_TOKEN: process.env.CACHE_TOKEN,
   SHOPIFY_GRAPHQL_ENDPOINT: process.env.SHOPIFY_GRAPHQL_ENDPOINT as string,
   SHOPIFY_STOREFRONT_TOKEN: process.env.SHOPIFY_STOREFRONT_TOKEN as string,
+  ENCRYPTION_KEY: process.env.ENCRYPTION_KEY,
 }

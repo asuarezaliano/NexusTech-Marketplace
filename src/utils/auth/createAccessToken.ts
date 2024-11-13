@@ -1,6 +1,7 @@
 import { GraphQLClientSingleton } from 'app/graphql'
 import { customerAccessTokenCreateMutation } from 'app/graphql/mutations/customerAccessTokenCreate'
 import { cookies } from 'next/headers'
+import { encrypt } from '../encryption'
 
 export const createAccessToken = async (email: string, password: string) => {
   const cookiesStore = cookies()
@@ -14,9 +15,9 @@ export const createAccessToken = async (email: string, password: string) => {
   )
 
   const { accessToken, expiresAt } = customerAccessTokenCreate?.customerAccessToken
-  //TODO: ENCRIPTAR TOKEN
   if (accessToken) {
-    cookiesStore.set('accessToken', accessToken, {
+    const encryptedToken = await encrypt(accessToken)
+    cookiesStore.set('accessToken', encryptedToken, {
       path: '/',
       expires: new Date(expiresAt),
       httpOnly: true,

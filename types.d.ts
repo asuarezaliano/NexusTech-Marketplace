@@ -26,26 +26,54 @@ interface CartItem {
   merchandiseId: string
 }
 
-interface Order {
-  cancelReason: string | null
-  canceledAt: string | null
-  currencyCode: string
-  customerLocale: string
-  customerUrl: string
-  edited: boolean
-  email: string
-  financialStatus: string
-  fulfillmentStatus: string
+interface Customer {
   id: string
-  name: string
-  orderNumber: number
+  firstName: string
+  lastName: string
+  email: string
   phone: string
-  processedAt: string
-  statusUrl: string
-  lineItems: any
+  orders: {
+    totalCount: string
+  }
+  createdAt: string
+  defaultAddress: {
+    formatted: any[]
+    address1: string
+  }
+  addresses: {
+    edges: any[]
+  }
 }
 
-interface Customer {
-  firstName
-  email
+interface CustomerBasicInfo extends Pick<Customer, 'firstName' | 'email'> {}
+
+interface Order {
+  totalCount: number
+  orders: Array<{
+    cancelReason: string | null
+    canceledAt: string | null
+    currencyCode: string
+    customerLocale: string
+    customerUrl: string
+    edited: boolean
+    email: string
+    financialStatus: PaymentStatus
+    fulfillmentStatus: OrderStatus
+    id: string
+    name: string
+    orderNumber: number
+    phone: string
+    processedAt: string
+    statusUrl: string
+    lineItems: {
+      edges: Array<{
+        cursor: string
+        node: {
+          currentQuantity: number
+          quantity: number
+          title: string
+        }
+      }>
+    }
+  }>
 }
