@@ -55,12 +55,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ customer }) => {
             <Button onClick={() => handleNavigation('/login')}>Login</Button>
           ) : (
             <>
-              <Button onClick={() => handleNavigation('/my-account/profile')} variant="link">
+              <Button onClick={() => handleNavigation('/my-account')} variant="link">
                 Profile
               </Button>
-              <Button onClick={() => handleNavigation('/my-account/purchases')} variant="link">
-                Purchases
-              </Button>
+
               <Button onClick={() => handleNavigation('/my-account/items')} variant="link">
                 My Items
               </Button>
