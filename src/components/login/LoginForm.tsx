@@ -1,6 +1,8 @@
 'use client'
 import { handleLogin } from 'app/actions'
 import styles from './LoginForm.module.scss'
+import Link from 'next/link'
+import { Button } from '../shared/Button/Button'
 
 export const LoginForm = () => {
   const handleSubmit = async (event: any) => {
@@ -12,6 +14,13 @@ export const LoginForm = () => {
   return (
     <div className={styles.NewAccountForm}>
       <h1 className={styles.NewAccountForm__title}>Login</h1>
+      <div className={styles.NewAccountForm__signup}>
+        <p>Don&apos;t have an account?</p>
+        <Link href="/signin">
+          <Button variant="link">Sign up</Button>
+        </Link>
+      </div>
+
       <form onSubmit={handleSubmit} className={styles.NewAccountForm__form}>
         <input
           type="text"

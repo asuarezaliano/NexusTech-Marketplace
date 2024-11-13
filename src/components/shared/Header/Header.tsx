@@ -49,7 +49,7 @@ export const Header: React.FC = async () => {
                 </>
               ) : (
                 <Button variant="link" href="/login" className={styles.signInText}>
-                  Sign in
+                  Log in
                 </Button>
               )}
               <NoSSRShoppingCart />

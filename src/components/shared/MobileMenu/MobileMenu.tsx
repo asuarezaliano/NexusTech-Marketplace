@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { logout } from 'app/actions'
 
 interface MobileMenuProps {
-  customer: any // Ajusta el tipo según tu implementación
+  customer: Customer
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ customer }) => {

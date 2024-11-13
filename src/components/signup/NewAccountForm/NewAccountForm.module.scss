@@ -18,8 +18,8 @@
     column-gap: 1rem;
     row-gap: 2rem;
 
-    & > input[type='text'],
-    & > input[type='password'] {
+    & > div input[type='text'],
+    & > div input[type='password'] {
       color: $text-color;
       font-weight: 300;
       padding: 0.5rem 1rem;
@@ -27,34 +27,34 @@
       border: none;
       border-bottom: 1px solid $border-color;
       font-size: 1.25rem;
-
+      width: 100%;
       &:focus {
         outline: none;
         border-bottom: 1px solid $main-contrast;
       }
     }
 
-    & > input[name='first_name'] {
+    & > div[id='firstName'] {
       grid-area: a;
     }
 
-    & > input[name='last_name'] {
+    & > div[id='lastName'] {
       grid-area: b;
     }
 
-    & > input[name='email'] {
+    & > div[id='email'] {
       grid-area: c;
     }
 
-    & > input[name='phone'] {
+    & > div[id='phone'] {
       grid-area: d;
     }
 
-    & > input[name='password'] {
+    & > div[id='password'] {
       grid-area: e;
     }
 
-    & > input[name='password_confirmation'] {
+    & > div[id='password_confirmation'] {
       grid-area: f;
     }
 
@@ -73,7 +73,9 @@
 
   &__error {
     color: red;
-    font-weight: 300;
-    margin-top: 1rem;
+    font-weight: 200;
+    font-size: 11px;
+    height: 10px;
+    padding: 0 1rem;
   }
 }

@@ -3,7 +3,7 @@ interface ErrorPageProps {
   reset: () => void
 }
 
-type ProductType = {
+interface ProductType {
   id: string
   title: string
   description: string
@@ -16,7 +16,7 @@ type ProductType = {
   vendor: string
 }
 
-type CartItem = {
+interface CartItem {
   title: string
   price: number
   quantity: number
@@ -43,4 +43,9 @@ interface Order {
   processedAt: string
   statusUrl: string
   lineItems: any
+}
+
+interface Customer {
+  firstName
+  email
 }

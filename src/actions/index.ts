@@ -21,7 +21,7 @@ export const handleCreateUser = async (formData: FormData) => {
   const variables = {
     input: {
       ...formDataObject,
-      phone: '+598' + formDataObject.phone,
+      phone: '+' + formDataObject.phone,
     },
   }
 
@@ -33,7 +33,7 @@ export const handleCreateUser = async (formData: FormData) => {
 
   if (customer?.firstName) {
     await createAccessToken(formDataObject.email as string, formDataObject.password as string)
-    redirect('/store')
+    redirect('/login')
   }
 }
 
