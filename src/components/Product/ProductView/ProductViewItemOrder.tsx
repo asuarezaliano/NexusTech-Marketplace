@@ -19,6 +19,7 @@ export const ProductViewItemsOrder = ({ maxQuantity, product }: ProductViewItems
     addToCart({
       title: product.title,
       price: product.price,
+      description: product.description,
       quantity: counter,
       id: product.id,
       image: product.image,

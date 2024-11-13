@@ -25,7 +25,7 @@ export const Header: React.FC = async () => {
         />
         <nav className={`${styles.navigation} ${styles.desktopNav}`}>
           <div className={styles.navLinks}>
-            <Button variant="link" href="/">
+            <Button variant="link" href="/#top">
               Home
             </Button>
             <Button variant="link" href="/store" className={styles.navLinkWhite}>

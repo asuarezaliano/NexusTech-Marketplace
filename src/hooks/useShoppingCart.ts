@@ -1,19 +1,30 @@
 import { create } from 'zustand'
 
 type Store = {
-  cart: CartItem[]
+  cart: {
+    items: CartItem[]
+    total: number
+  }
   addToCart: (cartItem: CartItem) => void
   removeCartItem: (cartItem: CartItem) => void
 }
 
-const saveArrayToLocalStorage = (array: CartItem[]) => {
-  localStorage.setItem('cart', JSON.stringify(array))
+const saveArrayToLocalStorage = (cart: { items: CartItem[]; total: number }) => {
+  localStorage.setItem('cart', JSON.stringify(cart))
+}
+
+const calculateTotal = (cart: { items: CartItem[]; total: number }) => {
+  const total = cart.items.reduce((acc, item) => acc + item.price * item.quantity, 0)
+  return total
 }
 
 export const useShoppingCart = create<Store>()(set => ({
   cart: (() => {
     if (typeof window === 'undefined') {
-      return []
+      return {
+        items: [],
+        total: 0,
+      }
     }
 
     const cart = localStorage.getItem('cart')
@@ -21,32 +32,38 @@ export const useShoppingCart = create<Store>()(set => ({
       return JSON.parse(cart)
     }
 
-    return []
+    return {
+      items: [],
+      total: 0,
+    }
   })(),
   addToCart: (cartItem: CartItem) =>
     set(state => {
-      const currentCart = state.cart
-      const itemExists = currentCart.find(item => item.id === cartItem.id)
-      const replaceExistingItem = currentCart.map(item => {
-        if (item.id === cartItem.id) {
-          return cartItem
-        }
-        return item
-      })
+      let currentCart = state.cart
+      const itemExists = currentCart.items.find(item => item.id === cartItem.id)
 
       if (itemExists) {
-        saveArrayToLocalStorage(replaceExistingItem)
-        return { cart: replaceExistingItem }
+        const replaceExistingItem = currentCart.items.map(item => {
+          if (item.id === cartItem.id) {
+            return cartItem
+          }
+          return item
+        })
+        currentCart.items = replaceExistingItem
+      } else {
+        currentCart.items = [...state.cart.items, cartItem]
       }
-
-      saveArrayToLocalStorage([...state.cart, cartItem])
-      return { cart: [...state.cart, cartItem] }
+      currentCart.total = calculateTotal(currentCart)
+      saveArrayToLocalStorage(currentCart)
+      return { cart: currentCart }
     }),
   removeCartItem: (cartItem: CartItem) =>
     set(state => {
-      const currentCart = state.cart
-      const newCart = currentCart.filter(item => item.id !== cartItem.id)
-      saveArrayToLocalStorage(newCart)
-      return { cart: newCart }
+      let currentCart = state.cart
+      const newCart = currentCart.items.filter(item => item.id !== cartItem.id)
+      currentCart.items = newCart
+      currentCart.total = calculateTotal(currentCart)
+      saveArrayToLocalStorage(currentCart)
+      return { cart: currentCart }
     }),
 }))

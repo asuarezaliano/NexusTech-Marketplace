@@ -1,12 +1,13 @@
 .footer {
   background: $color-primary;
   color: $text-color;
-  padding: 1.5rem 4rem 0;
+  padding: 1.5rem 4rem 1rem;
   font-family: Arial, sans-serif;
   position: relative;
   overflow: hidden;
   margin-top: 4rem;
   width: 100%;
+  z-index: 10;
 
   &::before {
     content: '';

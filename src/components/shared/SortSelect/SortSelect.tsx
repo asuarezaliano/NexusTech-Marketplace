@@ -1,14 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import styles from './SortSelect.module.scss'
 import { MdKeyboardArrowDown } from 'react-icons/md'
+import { useClickOutside } from 'app/hooks/useClickOutside'
 
 export default function SortSelect() {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState('')
+  const modalRef = useRef<HTMLDivElement>(null)
+
+  useClickOutside(modalRef, () => setIsOpen(false), isOpen)
 
   const options = [
     { value: 'price-asc', label: 'Price: Low to High' },
@@ -27,14 +31,14 @@ export default function SortSelect() {
   }
 
   return (
-    <div className={styles.SortSelect}>
+    <div onBlur={() => setIsOpen(false)} tabIndex={0} className={styles.SortSelect}>
       <button className={styles.SortSelect__button} onClick={() => setIsOpen(!isOpen)}>
         <span>{options.find(opt => opt.value === selectedOption)?.label || 'Sort by...'}</span>
         <MdKeyboardArrowDown className={`${styles.arrow} ${isOpen ? styles.open : ''}`} />
       </button>
 
       {isOpen && (
-        <div className={styles.SortSelect__items}>
+        <div ref={modalRef} className={styles.SortSelect__items}>
           {options.map(option => (
             <div key={option.value} onClick={() => handleSelect(option.value)}>
               {option.label}

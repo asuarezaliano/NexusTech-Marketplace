@@ -22,6 +22,7 @@ type CartItem = {
   quantity: number
   id: string
   image: string
+  description: string
   merchandiseId: string
 }
 
