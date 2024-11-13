@@ -3,7 +3,13 @@ import type { NextRequest } from 'next/server'
 import { validateAccessToken } from './utils/auth/validateAccessToken'
 
 export const config = {
-  matcher: ['/login/:path*', '/signup/:path*', '/user/:path*', '/profile/:path*'],
+  matcher: [
+    '/login/:path*',
+    '/signup/:path*',
+    '/user/:path*',
+    '/profile/:path*',
+    '/my-account/:path*',
+  ],
 }
 
 export async function middleware(request: NextRequest) {
@@ -16,7 +22,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/store', request.url))
   }
 
-  if (path.startsWith('/user') || path.startsWith('/profile')) {
+  if (path.startsWith('/my-account')) {
     try {
       const customer = await validateAccessToken()
 

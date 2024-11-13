@@ -10,7 +10,7 @@ import { redirect } from 'next/navigation'
 interface CustomerCreateResponse {
   customerCreate: {
     customerUserErrors: any[]
-    customer: any
+    customer: CustomerBasicInfo
   }
 }
 

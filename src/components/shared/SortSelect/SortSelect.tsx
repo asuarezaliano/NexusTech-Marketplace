@@ -31,7 +31,7 @@ export default function SortSelect() {
   }
 
   return (
-    <div onBlur={() => setIsOpen(false)} tabIndex={0} className={styles.SortSelect}>
+    <div className={styles.SortSelect}>
       <button className={styles.SortSelect__button} onClick={() => setIsOpen(!isOpen)}>
         <span>{options.find(opt => opt.value === selectedOption)?.label || 'Sort by...'}</span>
         <MdKeyboardArrowDown className={`${styles.arrow} ${isOpen ? styles.open : ''}`} />

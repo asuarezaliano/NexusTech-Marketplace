@@ -10,7 +10,7 @@ const UserDropdown = dynamic(() => import('../UserDropDown/UserDropdown'), { ssr
 const MobileMenu = dynamic(() => import('../MobileMenu/MobileMenu'), { ssr: false })
 
 export const Header: React.FC = async () => {
-  const customer = await validateAccessToken()
+  const customer: CustomerBasicInfo = await validateAccessToken()
 
   return (
     <header className={styles.header}>

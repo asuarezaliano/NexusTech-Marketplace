@@ -26,7 +26,7 @@ export default function FilterSelect({ collections }: FilterSelectProps) {
   }
 
   return (
-    <div onBlur={() => setIsOpen(false)} tabIndex={0} className={styles.FilterSelect}>
+    <div className={styles.FilterSelect}>
       <button className={styles.FilterSelect__button} onClick={() => setIsOpen(!isOpen)}>
         <span>
           {collections.find(col => col.handle === selectedOption)?.title ||

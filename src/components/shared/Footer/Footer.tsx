@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Footer.module.scss'
+import { Button } from '../Button/Button'
 
 export const Footer: React.FC = () => {
   return (
@@ -14,10 +15,14 @@ export const Footer: React.FC = () => {
             <h4>Links</h4>
             <ul>
               <li>
-                <a href="/">Home</a>
+                <Button variant="link" href="/">
+                  Home
+                </Button>
               </li>
               <li>
-                <a href="/store">Store</a>
+                <Button variant="link" href="/store">
+                  Store
+                </Button>
               </li>
             </ul>
           </div>

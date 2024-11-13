@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { logout } from 'app/actions'
 
 interface MobileMenuProps {
-  customer: Customer
+  customer: CustomerBasicInfo
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ customer }) => {
@@ -52,7 +52,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ customer }) => {
             Store
           </Button>
           {!customer?.firstName ? (
-            <Button onClick={() => handleNavigation('/login')}>Sign in</Button>
+            <Button onClick={() => handleNavigation('/login')}>Login</Button>
           ) : (
             <>
               <Button onClick={() => handleNavigation('/my-account/profile')} variant="link">

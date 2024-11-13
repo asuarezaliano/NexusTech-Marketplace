@@ -6,8 +6,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string
   variant?: 'button' | 'link'
   className?: string
-  onClick?: () => void
+  onClick?: (e?: any) => void
   children: React.ReactNode
+  [props: string]: any
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -20,7 +21,12 @@ export const Button: FC<ButtonProps> = ({
 }) => {
   if (variant === 'link' && href) {
     return (
-      <Link href={href} className={`${styles.button} ${className}`} data-variant="link">
+      <Link
+        href={href}
+        className={`${styles.button} ${className}`}
+        data-variant="link"
+        onClick={onClick}
+      >
         {children}
       </Link>
     )
