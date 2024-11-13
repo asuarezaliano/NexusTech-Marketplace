@@ -1,10 +1,11 @@
 import { GraphQLClientSingleton } from 'app/graphql'
 import { customerName } from 'app/graphql/queries/customerName'
 import { cookies } from 'next/headers'
+import { decrypt } from '../encryption'
 
 export const validateAccessToken = async () => {
   const cookieStore = cookies()
-  const accessToken = cookieStore.get('accessToken')?.value
+  const accessToken = await decrypt(cookieStore.get('accessToken')?.value)
   if (!accessToken) {
     return null
   }

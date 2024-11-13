@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { validateAccessToken } from './utils/auth/validateAccessToken'
+import { decrypt } from './utils/encryption'
 
 export const config = {
   matcher: [
@@ -14,7 +15,7 @@ export const config = {
 
 export async function middleware(request: NextRequest) {
   const cookieStore = request.cookies
-  const accessToken = cookieStore.get('accessToken')?.value
+  const accessToken = await decrypt(cookieStore.get('accessToken')?.value)
 
   const path = request.nextUrl.pathname
 

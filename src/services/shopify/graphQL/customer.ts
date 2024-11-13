@@ -1,6 +1,7 @@
 import { GraphQLClientSingleton } from 'app/graphql'
 import { customerAllDataQuery } from 'app/graphql/queries/customerAlldata'
 import { getOrdersQuery } from 'app/graphql/queries/getOrders'
+import { decrypt } from 'app/utils/encryption'
 import { cookies } from 'next/headers'
 
 interface OrderNode {
@@ -44,7 +45,7 @@ interface CustomerOrdersResponse {
 
 export const getCustomerOrders = async (): Promise<Order> => {
   const cookiesStorage = cookies()
-  const accessToken = cookiesStorage.get('accessToken')?.value || ''
+  const accessToken = (await decrypt(cookiesStorage.get('accessToken')?.value)) || ''
   const graphqlClient = GraphQLClientSingleton.getInstance().getClient()
   const variables = {
     customerAccessToken: accessToken,
@@ -63,7 +64,7 @@ export const getCustomerOrders = async (): Promise<Order> => {
 
 export const getAllCustomerData = async (): Promise<Customer> => {
   const cookiesStorage = cookies()
-  const accessToken = cookiesStorage.get('accessToken')?.value || ''
+  const accessToken = (await decrypt(cookiesStorage.get('accessToken')?.value)) || ''
   const graphqlClient = GraphQLClientSingleton.getInstance().getClient()
   const variables = {
     customerAccessToken: accessToken,

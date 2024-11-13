@@ -4,6 +4,7 @@ import { createCartMutation } from 'app/graphql/mutations/createCartMutation'
 import { createUserMutation } from 'app/graphql/mutations/createUserMutation'
 import { createAccessToken } from 'app/utils/auth/createAccessToken'
 import { validateAccessToken } from 'app/utils/auth/validateAccessToken'
+import { decrypt } from 'app/utils/encryption'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
@@ -43,7 +44,6 @@ export const handleLogin = async (formData: FormData) => {
     formDataObject.email as string,
     formDataObject.password as string
   )
-
   if (accesToken) {
     redirect('/store')
   }
@@ -51,7 +51,7 @@ export const handleLogin = async (formData: FormData) => {
 
 export const handleCreateCart = async (items: CartItem[]) => {
   const cookiesStore = cookies()
-  const accesToken = cookiesStore.get('accessToken')?.value as string
+  const accesToken = (await decrypt(cookiesStore.get('accessToken')?.value)) as string
 
   if (!accesToken) redirect('/login')
 
