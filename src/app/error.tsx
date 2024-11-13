@@ -1,18 +1,22 @@
 'use client'
 import Image from 'next/image'
 import styles from 'app/scss/error-global.module.scss'
+import { Button } from 'app/components/shared/Button/Button'
+import Title from 'app/components/shared/Title/Title'
 
-export default function GloablError({ reset }: ErrorPageProps) {
+export default function GlobalError({ reset }: ErrorPageProps) {
   return (
     <main className={styles.Error}>
-      <h1 className={styles.Error__title}>Ha ocurrido un error</h1>
-      <Image src="/images/error.png" width={500} height={500} alt="Error" />
+      <Title variant="subtitle" className={styles.Error__title}>
+        An error has occurred
+      </Title>
+      <Image src="/images/error.png" width={300} height={300} alt="Error" />
       <p className={styles.Error__message}>
-        Al parecer ha ocurrido un error, pero no te sientas mal
+        It seems an error has occurred, but don&apos;t feel bad
       </p>
-      <button className={styles.Error__button} onClick={reset}>
-        Volver a intentar
-      </button>
+      <Button className={styles.Error__button} onClick={reset}>
+        Try again
+      </Button>
     </main>
   )
 }
