@@ -1,7 +1,7 @@
 import { MainProducts } from 'app/components/home/MainProducts'
 
 export const metadata = {
-  title: 'Future World',
+  title: 'Nexus Tech',
   description: 'Welcome to future World',
   keywords: [
     'ecommerce',
