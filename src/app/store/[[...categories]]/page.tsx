@@ -18,8 +18,9 @@ export default async function Category(props: CategoryProps) {
 
   let products = []
   const collections = await ServiceCollections.getCollections()
-
+  let currentPath = `/store/`
   if (categories?.length > 0) {
+    currentPath = `/store/${categories.join('/')}`
     const selectedCollectionId = collections.find(
       (collection: any) => collection.handle === categories[0]
     ).id
@@ -29,8 +30,9 @@ export default async function Category(props: CategoryProps) {
   }
 
   if (sort) {
+    currentPath += `?sort=${sort}`
     products = sortBy(products, sort as SortType)
   }
 
-  return <ProductsWrapper products={products} />
+  return <ProductsWrapper products={products} currentPath={currentPath} />
 }

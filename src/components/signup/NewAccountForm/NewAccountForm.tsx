@@ -4,9 +4,11 @@ import styles from './NewAccountForm.module.scss'
 import { handleCreateUser } from 'app/actions'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { ToastType, useToastStore } from 'app/hooks/useToastStore'
 
 export const NewAccountForm = () => {
   const [loading, setLoading] = useState<boolean>(false)
+  const { showToast } = useToastStore()
 
   const validationSchema = Yup.object({
     firstName: Yup.string().required('First name is required'),
@@ -42,7 +44,7 @@ export const NewAccountForm = () => {
         })
         await handleCreateUser(formData)
       } catch (error) {
-        console.error(error)
+        showToast('An error occurred while trying to sign up', ToastType.rejected)
       } finally {
         setLoading(false)
       }

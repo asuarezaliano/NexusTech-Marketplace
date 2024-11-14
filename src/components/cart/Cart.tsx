@@ -9,10 +9,12 @@ import { Button } from 'app/components/shared/Button/Button'
 import Title from '../shared/Title/Title'
 import { stripHtmlTags } from 'app/utils/fixHtmls'
 import { ImCross } from 'react-icons/im'
+import { ToastType, useToastStore } from 'app/hooks/useToastStore'
 
 export const Cart: FC = () => {
   const { cart, removeCartItem } = useShoppingCart()
   const [isBuying, setIsBuying] = useState(false)
+  const { showToast } = useToastStore()
 
   const handleBuy = async () => {
     try {
@@ -22,7 +24,7 @@ export const Cart: FC = () => {
       window.localStorage.removeItem('cart')
       window.location.href = checkoutUrl
     } catch (error) {
-      console.log(error)
+      showToast('An error occurred while trying place the order', ToastType.rejected)
     } finally {
       setIsBuying(false)
     }
