@@ -6,10 +6,14 @@ import styles from './SortSelect.module.scss'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { useClickOutside } from 'app/hooks/useClickOutside'
 
-export default function SortSelect() {
+interface SortSelectProps {
+  sortType?: string
+}
+
+export default function SortSelect({ sortType }: SortSelectProps) {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
-  const [selectedOption, setSelectedOption] = useState('')
+  const [selectedOption, setSelectedOption] = useState(sortType ?? '')
   const modalRef = useRef<HTMLDivElement>(null)
 
   useClickOutside(modalRef, () => setIsOpen(false), isOpen)
