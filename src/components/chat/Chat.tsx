@@ -1,6 +1,6 @@
 'use client'
 import { useChat } from 'ai/react'
-import styles from './chat.module.scss'
+import styles from './Chat.module.scss'
 import Title from '../shared/Title/Title'
 
 export const Chat = (props: { agent: string }) => {
