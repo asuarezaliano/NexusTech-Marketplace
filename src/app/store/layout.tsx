@@ -4,6 +4,7 @@ import styles from './StoreLayout.module.scss'
 import Title from 'app/components/shared/Title/Title'
 import SortSelect from 'app/components/shared/SortSelect/SortSelect'
 import FilterSelect from 'app/components/shared/FilterSelect/FilterSelect'
+import { Button } from 'app/components/shared/Button/Button'
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const collections = await ServiceCollections.getCollections()
@@ -37,6 +38,9 @@ export default async function Layout({ children }: { children: React.ReactNode }
         </nav>
         <div className={styles.StoreLayout__content}>{children}</div>
       </div>
+      <Link href="/chat" className={styles.StoreLayout__floatingButton}>
+        <Button>Assist</Button>
+      </Link>
     </main>
   )
 }
