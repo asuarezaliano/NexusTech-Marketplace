@@ -1,15 +1,29 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './ProductCard.module.scss'
 import { stripHtmlTags } from 'app/utils/fixHtmls'
+import { useNavegationHistory } from 'app/hooks/useNavegationHistory'
 
 interface ProductCardInterface {
   product: ProductType
+  currentPath: string
 }
 
-export const ProductCard = ({ product }: ProductCardInterface) => {
+export const ProductCard = ({ product, currentPath }: ProductCardInterface) => {
+  const { addPath } = useNavegationHistory()
+  const handleNavigation = () => {
+    addPath(currentPath)
+  }
+
   return (
-    <Link href={`/product/${product.id}`} className={styles.ProductCard__link}>
+    <Link
+      href={{
+        pathname: `/product/${product.id}`,
+      }}
+      className={styles.ProductCard__link}
+      onClick={() => handleNavigation()}
+    >
       <article className={styles.ProductCard}>
         <div className={styles.ProductCard__imageContainer}>
           <Image

@@ -1,0 +1,55 @@
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 300px;
+  animation: slideIn 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.message {
+  color: white;
+  margin: 0;
+  padding-right: 20px;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.accepted {
+  background-color: $green-success; // Verde
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.rejected {
+  background-color: $red-error;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

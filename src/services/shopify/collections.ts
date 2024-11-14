@@ -19,7 +19,7 @@ export const ServiceCollections = {
       })
       return transformedCollections
     } catch (error) {
-      console.log(error)
+      console.log('Error fetching collections:', error)
     }
   },
 }

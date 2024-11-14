@@ -4,6 +4,8 @@ import { Footer } from '../components/shared/Footer'
 import { Roboto } from 'next/font/google'
 import '../app/globals.css'
 import '../scss/globals.scss'
+import dynamic from 'next/dynamic'
+const ToastContainer = dynamic(() => import('app/components/Toast/ToastContainer'), { ssr: false })
 
 const roboto = Roboto({
   weight: ['100', '300', '400', '500', '700', '900'],
@@ -23,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.className} flex-layout`}>
+        <ToastContainer />
         <Header />
         <main className="flex-grow">
           <div className="container">{children}</div>

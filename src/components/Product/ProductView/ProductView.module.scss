@@ -1,14 +1,15 @@
+.Container {
+  padding: 1rem 0;
+}
+
 .ProductView {
   max-width: 1200px;
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 450px;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 5rem;
-  margin-top: 5rem;
-  padding: 0 1rem;
+  margin-top: 3rem;
 
   @media (max-width: 1024px) {
-    grid-template-columns: 1fr 1fr;
     grid-gap: 2rem;
   }
 

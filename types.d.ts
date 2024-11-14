@@ -77,3 +77,8 @@ interface Order {
     }
   }>
 }
+
+type LoginData = {
+  email: string
+  password: string
+}
