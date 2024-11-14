@@ -1,6 +1,6 @@
 import { createAgent } from 'app/utils/agent/createAgent'
-import Chat from '../../components/chat/Chat'
 import { ServiceProducts } from 'app/services/shopify/porducts'
+import { Chat } from 'app/components/chat/Chat'
 
 export default async function ChatPage() {
   const products = await ServiceProducts.getProducts()
@@ -9,7 +9,6 @@ export default async function ChatPage() {
 
   return (
     <>
-      <h1>Chatbot</h1>
       <Chat agent={agent} />
     </>
   )
