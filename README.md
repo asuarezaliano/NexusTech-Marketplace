@@ -1,51 +1,51 @@
-## Requisitos y Configuración
+# Nexus Tech Marketplace
 
-### Requisitos Previos
+This is a modern e-commerce project built with [Next.js 14](https://nextjs.org), demonstrating advanced web development practices and patterns.
+Visit the production version at [https://nexus-tech-marketplace.vercel.app/](https://nexus-tech-marketplace.vercel.app/).
 
-- Node.js 20.x o superior
-- npm o yarn como gestor de paquetes
-- Una cuenta de Shopify (para funcionalidades completas)
+## Requirements and Setup
 
-### Configuración Inicial
+### Prerequisites
 
-1. Clona el repositorio:
+- Node.js 20.x or higher
+- npm or yarn as package manager
+- A Shopify account (for full functionality)
+
+### Initial Setup
+
+1. Clone the repository:
 
    ```bash
    git clone https://github.com/asuarezaliano/nexus-tech-marketplace.git
    cd nexus-tech-marketplace
    ```
 
-2. Instala las dependencias:
+2. Install dependencies:
 
    ```bash
    npm install
-   # o
+   # or
    yarn install
    ```
 
-3. Configura las variables de entorno:
+3. Configure environment variables:
 
    ```bash
    cp .env.example .env.local
    ```
 
-   Edita el archivo `.env.local` con tus credenciales de Shopify
+   Edit the `.env.local` file with your Shopify credentials
 
-4. Inicia el servidor de desarrollo:
+4. Start the development server:
    ```bash
    npm run dev
-   # o
+   # or
    yarn dev
    ```
 
-El proyecto estará disponible en `http://localhost:3000`
+The project will be available at `http://localhost:3000`
 
-# Nexus Tech Marketplace
-
-Este es un proyecto de e-commerce moderno construido con [Next.js 14](https://nextjs.org), que demuestra prácticas y patrones avanzados de desarrollo web.
-Visita la versión en producción en [https://nexus-tech-marketplace.vercel.app/].
-
-## Características Técnicas Detalladas
+## Technical Features Detailed
 
 ### Next.js 14 Features
 
@@ -90,12 +90,12 @@ Used in:
 
 #### Backend for Frontend (BFF)
 
-- Implementación de una capa intermedia que actúa como backend específico para el frontend
-- Manejo optimizado de las peticiones a la API de Shopify para:
-  - Catálogo de productos
-  - Gestión de inventario
-  - Procesamiento de órdenes
-- Transformación y adaptación de datos según las necesidades específicas del frontend
+- Implementation of an intermediate layer that acts as a specific backend for the frontend
+- Optimized handling of Shopify API requests for:
+  - Product catalog
+  - Inventory management
+  - Order processing
+- Data transformation and adaptation according to specific frontend needs
 
 #### Routing and Layouts System
 
@@ -104,7 +104,7 @@ Used in:
 - Next.js Image component used to improve performance
 - Route grouping: Allows organizing and grouping related routes in directories without affecting the final URL, improving code organization
 
-#### Integración con Shopify
+#### Shopify Integration
 
 - Shopify GraphQL API for:
   - Product and variant management
@@ -118,14 +118,14 @@ Used in:
 - Secure environment variables handling
 - CSRF attack protection in cart operations
 
-#### Manejo de Rutas
+#### Route Handling
 
-- Middleware para:
-- Control de acceso a rutas
-- Meta tags dinámicos
-- Página 404 personalizada con sugerencias de productos
-- Agrupación de rutas por funcionalidad
-- Rutas paralelas para layouts complejos
+- Middleware for:
+- Route access control
+- Dynamic meta tags
+- Custom 404 page with product suggestions
+- Route grouping by functionality
+- Parallel routes for complex layouts
 
 #### Cache
 
@@ -174,7 +174,7 @@ Benefits:
 - Better separation of concerns
 - Enhanced user experience with parallel content loading
 
-### Patrones de React Implementados
+### React Patterns Implemented
 
 #### Compound Components Pattern
 
